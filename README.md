@@ -3,6 +3,7 @@
 ### No Execício a seguir sera realizada a criação das tabelas Alunos e Cursos Esse modelo lógico reflete as necessidades do banco de dados da universidade, incluindo a relação entre alunos, cursos e áreas, a geração automática de e-mails, as restrições de unicidade e as operações desejadas através de stored procedures e funções. Você precisará traduzir esse modelo em SQL para criar as tabelas e implementar as stored procedures e funções no seu sistema de gerenciamento de banco de dados (por exemplo, MySQL, PostgreSQL, SQL Server, etc.)
 
 • Cada curso pode pertencer a somente uma área;
+
 1-  Utilize Stored Procedures para automatizar a inserção e seleção dos cursos;
 Procedure para insert na tabela curso :
 ```SQL
@@ -50,6 +51,10 @@ END$
 
 DELIMITER ;
 ```
+Imagem: 
+
+![image](https://github.com/AndreFelipefer/Faculdade/assets/129207232/16457b2e-b261-4eeb-b0bf-68ede486a31e)
+
 
 3- Crie uma rotina que recebe os dados de um novo curso e o insere no banco de dados;
 ```SQL
@@ -81,6 +86,7 @@ CREATE FUNCTION obter_id_curso(
   p_area_curso VARCHAR(100)
 )
 RETURNS INT
+DETERMINISTIC
 BEGIN
   DECLARE curso_id INT;
   
@@ -90,10 +96,10 @@ BEGIN
   
   RETURN curso_id;
 END;
-
 $
 
 DELIMITER ;
+
 ```
 Chamando a função:
 ```SQL
